@@ -1,0 +1,18 @@
+/*
+Provided that you have a given number of small rice bags (1 kilo each) and big rice bags (5 kilos each), 
+write a method that returns the minimum number of small bags necessary to package goal kilos of rice. 
+Return -1 if it is not possible to package the required rice amount with the bags provided.
+*/
+
+public Integer getNumberSmallBags(Integer big, Integer small, Integer goal){
+  if (goal % 5 > small){
+    return -1; 
+  }
+  if (goal - (big * 5) > small){
+    return -1; 
+  }
+  if (big * 5 > goal){
+    return goal % 5; 
+  }
+  return goal - (big * 5);
+}
