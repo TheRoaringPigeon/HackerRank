@@ -1,0 +1,36 @@
+/* 
+A palindrome is a word which reads the same backward or forward.
+'abcba' is a palindrome.
+Write a method that returns the longest palindrome substring of a given string.
+*/
+
+public String findLongestPalindrom(String word) {
+  if (isPal(word)){
+    return word; 
+  }
+  String toReturn = "";
+  for (int i = 0; i < word.length(); i++){
+    String current = findPal(word.substring(i, word.length()));
+    if (current.length() > toReturn.length()){
+      toReturn = current; 
+    }
+  }
+  return toReturn;
+}
+
+String findPal(String word){
+ for (int i = word.length() -1; i >= 0; i--){
+  if (isPal(word.substring(0, i))){
+   return word.substring(0, i); 
+  }
+ }
+  return "";
+}
+
+Boolean isPal(String word){
+ String compare = "";
+  for (int i = word.length() - 1; i >= 0; i--){
+   compare += word.charAt(i); 
+  }
+  return word.equals(compare);
+}
