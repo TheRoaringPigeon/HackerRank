@@ -1,0 +1,13 @@
+// Given two strings, write a method that finds the longest common sub-sequence.
+
+public String findLongestCommonSequence(String s1, String s2){
+  String toReturn = "";
+  for (int i = 0; i < s1.length(); i++){
+    for (int j = s1.length(); j > i; j--){
+      if (s2.contains(s1.substring(i, j))){
+        return s1.substring(i, j); 
+      }
+    }
+  }
+  return "";
+}
