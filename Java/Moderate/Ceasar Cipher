@@ -1,0 +1,41 @@
+/*
+The Ceasar cipher is a basic encryption technique used by Julius Ceasar to securely communicate with his generals. 
+Each letter is replaced by another letter N positions down the english alphabet. 
+For example, for a rotation of 5, the letter 'c' would be replaced by an 'h'. 
+In case of a 'z', the alphabet rotates and it is transformed into a 'd'.
+Implement a decoder for the Ceasar cipher where N = 5.
+*/
+
+
+//With helper method (First attempt)
+
+public String decode(String code){
+  String toReturn = "";
+  for (char c : code.toCharArray()){
+    toReturn += swap(c); 
+  }
+  return toReturn;
+}
+
+private char swap(char c){
+ int value = (int)c + 5;
+  if (value > 122){
+   value -= 26; 
+  }
+ return (char)value;
+}
+
+
+//Without helper method (After checking the internet and finding a more concise way)
+
+public String decode(String code){
+  String toReturn = "";
+  int cap = 'z', correction = 'z' - 'a' + 1;
+  for (char c : code.toCharArray()){
+    int value = c + 5;
+    char toAdd = value < cap ? (char)value :
+  	  (char)(value - correction);
+    toReturn += toAdd;
+  }
+  return toReturn;
+}
