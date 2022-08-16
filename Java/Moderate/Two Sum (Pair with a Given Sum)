@@ -1,0 +1,33 @@
+/*
+Write a method that checks if there is at least on pair of numbers which sum equals target.
+arr=[1, 3, 4] and target=5 result is true because the pair (1,4) sums to five.
+*/
+
+
+// Solution using recursion
+
+public Boolean sumsToTarget(Integer[] arr, Integer target) {
+	return sumsToTargetHelper(0, arr, target);
+}
+
+private Boolean sumsToTargetHelper(int start, int[] arr, int target){
+  if (start > arr.length){
+   return target == 0; 
+  }
+  return sumsToTargetHelper(start + 1, arr, target - arr[start]) || 
+    sumsToTargetHelper(start + 1, arr, target);
+}
+
+// Solution using HashSet
+
+public Boolean sumsToTarget(Integer[] arr, Integer target) {
+  Set<Integer> set = new HashSet<>();
+  for (int i : arr){
+    int pair = target - i;
+    if (set.contains(pair)){
+      return true; 
+    }
+    set.add(i);
+  }
+  return false;
+}
