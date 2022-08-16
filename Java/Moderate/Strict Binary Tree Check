@@ -1,0 +1,18 @@
+/*
+A binary tree is strict when all nodes have either two or zero child nodes.
+Write a method that checks if a binary tree is strict.
+TreeNode API methods: node.left() and node.right().
+*/
+
+public Boolean isStrictTree(TreeNode node) {
+	return helper(node);
+}
+
+private Boolean helper(TreeNode node) {
+  	if (node.left() == null && node.right() == null){
+     	  return true; 
+    }
+  	return node.right() != null && node.left() != null ?
+      	helper(node.left()) && helper(node.right()) :
+  		  false;
+}
